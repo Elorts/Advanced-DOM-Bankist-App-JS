@@ -31,7 +31,7 @@ document.addEventListener('keydown', function (e) {
 });
 
 console.log('**Selecting elements, creating and deleting el***<196>*****');
-
+/*
 // selecting
 console.log(document.documentElement); // entire doc
 console.log(document.head);
@@ -67,7 +67,8 @@ document
   .addEventListener('click', function () {
     message.remove();
   });
-
+*/
+/*
 console.log('**Ssstyles, attr, class***<197>*****');
 
 //styles
@@ -101,3 +102,28 @@ console.log(logo.getAttribute('src'));
 
 // classes
 logo.classList.toggle('mikas', 'ridikas');
+*/
+console.log('**Smoth scrolling*******<198>*****');
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  //console.log(s1coords);
+
+  //scroll to old way
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
+
+  // old way
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   right: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
