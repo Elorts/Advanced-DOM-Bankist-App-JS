@@ -67,3 +67,37 @@ document
   .addEventListener('click', function () {
     message.remove();
   });
+
+console.log('**Ssstyles, attr, class***<197>*****');
+
+//styles
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+
+console.log(getComputedStyle(message).color); // shows message propertires
+
+console.log(
+  (message.style.height =
+    Number.parseFloat(getComputedStyle(message).height) + 40 + 'px')
+);
+
+//setproperty
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// Attributes
+const logo = document.querySelector('.nav__logo');
+logo.alt = 'Mumumu!';
+
+console.log(logo.alt);
+console.log(logo.src);
+
+console.log(logo.className);
+console.log(logo.getAttribute('designer'));
+
+logo.setAttribute('company', 'good company');
+
+console.log(logo.src);
+console.log(logo.getAttribute('src'));
+
+// classes
+logo.classList.toggle('mikas', 'ridikas');
