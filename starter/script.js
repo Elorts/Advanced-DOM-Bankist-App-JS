@@ -29,3 +29,41 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+console.log('**Selecting elements, creating and deleting el***<196>*****');
+
+// selecting
+console.log(document.documentElement); // entire doc
+console.log(document.head);
+console.log(document.body); // entire doc
+
+const header = document.querySelector('.header');
+const allSections = document.querySelectorAll('.section');
+console.log(allSections);
+
+document.getElementById('section--1');
+const allButtons = document.getElementsByTagName('button');
+console.log(allButtons);
+
+console.log(document.getElementsByClassName('btn'));
+
+// creating and inserting
+// check .insertAdjecentHTML
+const message = document.createElement('div');
+message.classList.add('cookie-message');
+message.textContent = 'We use cooooockies!';
+message.innerHTML =
+  'innerHtml cooooockies <button class="btn btn--close-cookie">Cockies Btn!</button>';
+
+header.prepend(message);
+// header.append(message);
+// header.append(message.cloneNode(true));
+// header.before(message);
+// header.after(message);
+
+// delete
+document
+  .querySelector('.btn--close-cookie')
+  .addEventListener('click', function () {
+    message.remove();
+  });
