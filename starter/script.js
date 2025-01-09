@@ -103,6 +103,7 @@ console.log(logo.getAttribute('src'));
 // classes
 logo.classList.toggle('mikas', 'ridikas');
 */
+/*
 console.log('**Smoth scrolling*******<198>*****');
 
 const btnScrollTo = document.querySelector('.btn--scroll-to');
@@ -145,6 +146,32 @@ setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 10000);
 // h1.onmouseenter = function (e) {
 //   alert('addEventListener: Great! You are reading the heading :D');
 // };
-
+*/
+/*
 console.log('**bubbling and capturing*******<200>*****');
 // bubbling theory
+*/
+console.log('**event propagation in practice*******<201>*****');
+
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+console.log(randomColor(0, 255));
+
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  console.log('LINK', e.target, e.currentTarget);
+  this.style.backgroundColor = randomColor();
+  // e.stopPropagation(); // stops event traveling up not a good practice in general
+});
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  console.log('LINK', e.target, e.currentTarget);
+  this.style.backgroundColor = randomColor();
+});
+
+document.querySelector('.nav').addEventListener('click', function (e) {
+  console.log('LINK', e.target, e.currentTarget);
+  this.style.backgroundColor = randomColor();
+});
