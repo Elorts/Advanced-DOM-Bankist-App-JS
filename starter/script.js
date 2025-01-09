@@ -209,3 +209,23 @@ document.querySelector('.nav').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
 });
 */
+
+console.log('**dom traversing ******<203>*****');
+
+const h1 = document.querySelector('h1');
+
+// children
+
+h1.firstElementChild.style.color = 'white';
+
+// find parents
+h1.closest('.header').style.background = 'var(--gradient-secondary)';
+
+// sideways: siblings
+console.log(h1.nextElementSibling);
+
+console.log(h1.parentElement.children);
+
+[...h1.parentElement.children].forEach(function (el) {
+  if (el !== h1) el.style.transform = 'scale(0.5';
+});
