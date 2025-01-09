@@ -128,7 +128,7 @@ btnScrollTo.addEventListener('click', function (e) {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
 
-console.log('**events*******<198>*****');
+console.log('**events*******<199>*****');
 
 const h1 = document.querySelector('h1');
 
@@ -145,3 +145,6 @@ setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 10000);
 // h1.onmouseenter = function (e) {
 //   alert('addEventListener: Great! You are reading the heading :D');
 // };
+
+console.log('**bubbling and capturing*******<200>*****');
+// bubbling theory
