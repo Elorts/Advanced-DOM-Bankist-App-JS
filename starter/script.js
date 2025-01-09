@@ -1,12 +1,14 @@
 'use strict';
 
-///////////////////////////////////////
-// Modal window
-
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+///////////////////////////////////////
+// Modal window
 
 const openModal = function (e) {
   e.preventDefault();
@@ -30,7 +32,37 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-console.log('**Selecting elements, creating and deleting el***<196>*****');
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+//////////////////////////////
+// page navigation
+//
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     console.log(id);
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
+// 1. add eventn listener to common parent
+// 2. determine what element originate the event
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+  // matching strategy
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    console.log(id);
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
+
+//console.log('**Selecting elements, creating and deleting el***<196>*****');
 /*
 // selecting
 console.log(document.documentElement); // entire doc
@@ -151,6 +183,7 @@ setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 10000);
 console.log('**bubbling and capturing*******<200>*****');
 // bubbling theory
 */
+/*
 console.log('**event propagation in practice*******<201>*****');
 
 const randomInt = (min, max) =>
@@ -175,3 +208,4 @@ document.querySelector('.nav').addEventListener('click', function (e) {
   console.log('LINK', e.target, e.currentTarget);
   this.style.backgroundColor = randomColor();
 });
+*/
