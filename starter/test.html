@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Slider</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4;
+      }
+
+      .slider {
+        position: relative;
+        width: 80%;
+        max-width: 600px;
+        overflow: hidden;
+        border: 2px solid #ddd;
+        background: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .slides {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .slide {
+        min-width: 100%;
+        text-align: center;
+        padding: 40px 20px;
+        box-sizing: border-box;
+      }
+
+      .slide:nth-child(odd) {
+        background-color: #f9f9f9;
+      }
+
+      .slide:nth-child(even) {
+        background-color: #eaf4fc;
+      }
+
+      .slide h2 {
+        margin: 0 0 10px;
+        font-size: 1.5em;
+        color: #333;
+      }
+
+      .slide p {
+        margin: 0;
+        font-size: 1em;
+        color: #555;
+      }
+
+      button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        z-index: 1000;
+      }
+
+      button.prev {
+        left: 10px;
+      }
+
+      button.next {
+        right: 10px;
+      }
+
+      button:hover {
+        background: rgba(0, 0, 0, 0.8);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider">
+      <div class="slides">
+        <div class="slide">
+          <h2>Slide 1</h2>
+          <p>Welcome to the first slide. This is some sample text.</p>
+        </div>
+        <div class="slide">
+          <h2>Slide 2</h2>
+          <p>This is the second slide. Enjoy reading the content!</p>
+        </div>
+        <div class="slide">
+          <h2>Slide 3</h2>
+          <p>Here's the third slide. Keep sliding for more content!</p>
+        </div>
+        <div class="slide">
+          <h2>Slide 4</h2>
+          <p>Finally, this is the fourth slide. Thank you!</p>
+        </div>
+      </div>
+      <button class="prev">❮</button>
+      <button class="next">❯</button>
+    </div>
+
+    <script>
+      const slides = document.querySelector('.slides');
+      const slideElements = document.querySelectorAll('.slide');
+      const prevButton = document.querySelector('.prev');
+      const nextButton = document.querySelector('.next');
+
+      let currentIndex = 0;
+
+      function showSlide(index) {
+        const slideWidth = slideElements[0].clientWidth;
+        slides.style.transform = `translateX(-${index * slideWidth}px)`;
+      }
+
+      prevButton.addEventListener('click', () => {
+        currentIndex =
+          currentIndex > 0 ? currentIndex - 1 : slideElements.length - 1;
+        showSlide(currentIndex);
+      });
+
+      nextButton.addEventListener('click', () => {
+        currentIndex =
+          currentIndex < slideElements.length - 1 ? currentIndex + 1 : 0;
+        showSlide(currentIndex);
+      });
+
+      // Auto-slide functionality
+      setInterval(() => {
+        currentIndex =
+          currentIndex < slideElements.length - 1 ? currentIndex + 1 : 0;
+        showSlide(currentIndex);
+      }, 3000);
+
+      // Initialize slider
+      showSlide(currentIndex);
+    </script>
+  </body>
+</html>
