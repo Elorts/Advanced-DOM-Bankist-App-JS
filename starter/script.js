@@ -449,3 +449,5 @@ document.addEventListener('DOMContentLoaded', function (e) {
 window.addEventListener('load', function (e) {
   console.log('Page fully loaded', e);
 });
+
+// user defer on the top for faster loading
